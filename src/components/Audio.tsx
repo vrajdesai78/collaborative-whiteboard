@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
 import { useRemoteAudio } from '@huddle01/react/hooks';
+import React, { useEffect, useRef } from 'react';
 
 interface Props {
   peerId: string;
@@ -35,7 +35,7 @@ const PeerAudioElem: React.FC<Props> = ({ peerId }) => {
     }
   }, [stream, state]);
 
-  return <audio ref={audioRef} autoPlay></audio>;
+  return <audio ref={audioRef} autoPlay />;
 };
 
 export default PeerAudioElem;
