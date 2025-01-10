@@ -4,11 +4,11 @@ import {
   useLocalPeer,
   useLocalVideo,
 } from '@huddle01/react/hooks';
-import { FC, useEffect, useState } from 'react';
-import VideoElem from './Video';
 import clsx from 'clsx';
-import { BasicIcons } from './BasicIcons';
+import { FC, useEffect, useState } from 'react';
 import { useMeetStore } from '../store/meet';
+import { BasicIcons } from './BasicIcons';
+import VideoElem from './Video';
 
 const LocalPeerData: FC = () => {
   const { displayName } = useMeetStore();
@@ -22,7 +22,7 @@ const LocalPeerData: FC = () => {
     left: 0,
   });
 
-  const { sendData } = useDataMessage();
+  const { sendVolatileData } = useDataMessage();
 
   const { updateMetadata } = useLocalPeer<{
     displayName: string;
@@ -49,8 +49,7 @@ const LocalPeerData: FC = () => {
         top: adjustedTop + 15,
         left: adjustedLeft + 15,
       });
-      sendData({
-        to: '*',
+      sendVolatileData({
         payload: JSON.stringify({
           top: adjustedTop + 15,
           left: adjustedLeft + 15,
