@@ -3,8 +3,7 @@ import '@tldraw/tldraw/tldraw.css';
 import { useYjsStore } from '../store/useYjsStore';
 import NameEditor from './NameEditor';
 import { useParams } from 'react-router-dom';
-//@ts-ignore
-import { WebsocketProvider } from 'y-websocket';
+import AudioContainer from './AudioContainer';
 
 const HOST_URL = import.meta.env.VITE_API_HOST_URL;
 
@@ -27,6 +26,8 @@ export default function Room() {
           />
         </div>
       </div>
+
+      <AudioContainer />
     </>
   );
 }

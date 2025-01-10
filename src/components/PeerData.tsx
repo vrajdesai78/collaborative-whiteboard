@@ -3,10 +3,9 @@ import {
   useRemotePeer,
   useRemoteVideo,
 } from '@huddle01/react/hooks';
-import VideoElem from './Video';
-import Audio from './Audio';
-import { useState } from 'react';
 import clsx from 'clsx';
+import { useState } from 'react';
+import VideoElem from './Video';
 
 interface Props {
   peerId: string;
@@ -30,9 +29,9 @@ const PeerData: React.FC<Props> = ({ peerId }) => {
   });
 
   useDataMessage({
-    onMessage(payload, from, label) {
-      if (label === 'cursor' && from === peerId) {
-        const { top, left } = JSON.parse(payload);
+    onVolatileMesssage(data) {
+      if (data.label === 'cursor' && data.from === peerId) {
+        const { top, left } = JSON.parse(data.payload);
         setCursorPosition({
           top: top,
           left: left,
@@ -69,7 +68,6 @@ const PeerData: React.FC<Props> = ({ peerId }) => {
         >
           {metadata.displayName ?? 'Guest'}
         </div>
-        {<Audio peerId={peerId} />}
       </div>
     </div>
   );

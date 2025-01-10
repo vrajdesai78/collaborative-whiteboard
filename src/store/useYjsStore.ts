@@ -47,10 +47,12 @@ export function useYjsStore({
 		const yArr = yDoc.getArray<{ key: string; val: TLRecord }>(`tl_${roomId}`)
 		const yStore = new YKeyValue(yArr)
 
+		const websocketProvider = new WebsocketProvider(hostUrl, roomId, yDoc, {connect: true});
+
 		return {
 			yDoc,
 			yStore,
-			room: new WebsocketProvider(hostUrl, roomId, yDoc, { connect: true }),
+			room: websocketProvider,
 		}
 	}, [hostUrl, roomId])
 
@@ -270,7 +272,7 @@ export function useYjsStore({
 			unsubs.forEach((fn) => fn())
 			unsubs.length = 0
 		}
-	}, [room, yDoc, store, yStore])
+	}, [room, yDoc, store, yStore, roomId])
 
 	return storeWithStatus
 }
