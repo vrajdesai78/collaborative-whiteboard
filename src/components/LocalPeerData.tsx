@@ -34,7 +34,7 @@ const LocalPeerData: FC = () => {
       displayName: displayName,
       avatarUrl: `/0.png`,
     });
-  }, []);
+  }, [displayName, updateMetadata]);
 
   useEffect(() => {
     const onMouseMove = (e: MouseEvent) => {
@@ -61,7 +61,7 @@ const LocalPeerData: FC = () => {
     return () => {
       document.removeEventListener('mousemove', onMouseMove);
     };
-  }, []);
+  }, [sendVolatileData]);
 
   return (
     <>

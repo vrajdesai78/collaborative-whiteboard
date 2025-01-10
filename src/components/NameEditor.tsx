@@ -35,7 +35,7 @@ const NameEditor: FC<NameEditorProps> = track(({ roomId }) => {
         avatarUrl: '/0.png',
       });
     }
-  }, [roomId]);
+  }, [displayName, roomId, updateMetadata]);
 
   const createAndJoinRoom = async () => {
     const response = await fetch(
@@ -52,7 +52,6 @@ const NameEditor: FC<NameEditorProps> = track(({ roomId }) => {
       }
     );
     const data = await response.json();
-    console.log(data.data.roomId);
 
     const userToken = await createAccessToken(data.data.roomId);
     await joinRoom({

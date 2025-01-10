@@ -5,7 +5,6 @@ import {
 } from '@huddle01/react/hooks';
 import clsx from 'clsx';
 import { useState } from 'react';
-import Audio from './Audio';
 import VideoElem from './Video';
 
 interface Props {
@@ -69,7 +68,6 @@ const PeerData: React.FC<Props> = ({ peerId }) => {
         >
           {metadata.displayName ?? 'Guest'}
         </div>
-        {<Audio peerId={peerId} />}
       </div>
     </div>
   );

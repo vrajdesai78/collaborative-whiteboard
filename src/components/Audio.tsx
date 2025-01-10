@@ -10,9 +10,7 @@ const PeerAudioElem: React.FC<Props> = ({ peerId }) => {
 
   const { stream, state } = useRemoteAudio({
     peerId,
-    onPlayable(data) {
-      console.log('onPlayable', data);
-    },
+
   });
 
   useEffect(() => {
